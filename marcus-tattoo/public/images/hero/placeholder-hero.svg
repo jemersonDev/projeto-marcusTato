@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 2000" width="1600" height="2000">
+  <rect width="1600" height="2000" fill="#0a0a0a"/>
+  <text x="800" y="1000" fill="#3a3a3a" font-family="Arial, sans-serif" font-size="40" letter-spacing="6" text-anchor="middle">IMAGEM DO HERO</text>
+  <text x="800" y="1060" fill="#2a2a2a" font-family="Arial, sans-serif" font-size="24" letter-spacing="3" text-anchor="middle">public/images/hero/ — melhor tatuagem, vertical</text>
+</svg>

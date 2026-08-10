@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000">
+  <rect width="800" height="1000" fill="#0d0d0d"/>
+  <rect x="1" y="1" width="798" height="998" fill="none" stroke="#2a2a2a" stroke-width="2"/>
+  <text x="400" y="500" fill="#555" font-family="Arial, sans-serif" font-size="24" letter-spacing="4" text-anchor="middle">FOTO DO ARTISTA</text>
+  <text x="400" y="540" fill="#333" font-family="Arial, sans-serif" font-size="16" letter-spacing="2" text-anchor="middle">public/images/artist/</text>
+</svg>

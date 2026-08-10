@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+/* ============================================================
+   DESIGN SYSTEM — MARCUS TATTOO
+   Preto profundo, carvão, branco osso. Sem gradientes/neon.
+   Tipografia editorial de alto contraste. Muito espaço negativo.
+   ============================================================ */
+
+@theme {
+  /* Cores */
+  --color-ink: #0a0a0a;          /* fundo principal (preto profundo) */
+  --color-carbon: #131313;       /* superfícies elevadas */
+  --color-ash: #1c1c1c;          /* bordas/linhas sutis */
+  --color-smoke: #8a8a8a;        /* texto secundário */
+  --color-bone: #ededea;         /* texto principal (branco osso) */
+  --color-white: #ffffff;
+
+  /* Tipografia */
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+}
+
+:root {
+  --background: var(--color-ink);
+  --foreground: var(--color-bone);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: var(--color-ink);
+  color: var(--color-bone);
+  font-family: var(--font-body), system-ui, sans-serif;
+  overflow-x: hidden;
+  margin: 0;
+}
+
+/* Título editorial: condensado, apertado, caixa alta */
+.display {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 0.92;
+  text-transform: uppercase;
+}
+
+/* Eyebrow / labels: sans espaçada */
+.eyebrow {
+  font-family: var(--font-body), sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.35em;
+  font-size: 0.72rem;
+  color: var(--color-smoke);
+  font-weight: 500;
+}
+
+/* Foco visível para acessibilidade */
+:where(a, button, input, textarea, select, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-bone);
+  outline-offset: 3px;
+}
+
+/* Seleção de texto */
+::selection {
+  background: var(--color-bone);
+  color: var(--color-ink);
+}
+
+/* Scrollbar discreta (desktop) */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--color-ink); }
+::-webkit-scrollbar-thumb { background: var(--color-ash); }
+
+/* Respeita quem pediu menos movimento */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Container padrão */
+.container-x {
+  width: 100%;
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 5vw, 5rem);
+}
