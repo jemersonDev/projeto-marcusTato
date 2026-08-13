@@ -7,112 +7,176 @@
  */
 
 /* ---------------------------------------------------------------- SOBRE --- */
+/**
+ * Textos da seção "Sobre". Tudo aqui é editável e NADA é inventado.
+ * - paragraphs: a trajetória/experiência do Marcus (escreva livremente).
+ * - philosophy: uma frase-conceito em destaque (ou apague).
+ * - vision: opcional; se vazio (""), não aparece.
+ * - stats: SOMENTE dados reais. Deixe [] para não mostrar nada. Nunca invente
+ *   números (anos de experiência, nº de clientes, etc.).
+ *   Formato: { value: "10", label: "anos tatuando" }
+ * As especialidades foram para src/data/specialties.ts (specialtiesData).
+ */
 export const aboutConfig = {
   title: "Mais que uma tatuagem.",
-  // Preencha com a trajetória real do Marcus. Deixado curto e neutro de
-  // propósito — sem anos de experiência ou histórias inventadas.
   paragraphs: [
     "Marcus Henrique é tatuador e desenhista à frente do estúdio Marcus Tattoo, em Uberaba (MG).",
     "O trabalho é autoral e feito em studio privado, com atendimento somente por horário agendado. Cada projeto nasce de uma conversa e é desenhado sob medida para a pessoa e o local do corpo.",
   ],
-  // Frase de filosofia — edite ou apague.
   philosophy: "Transformando a pele em arte.",
+  vision: "", // opcional — frase sobre a visão dele sobre tatuagem
+  stats: [] as { value: string; label: string }[], // só dados reais
   image: "/images/artist/placeholder-artist.svg",
 };
 
-/* ------------------------------------------------------- ESPECIALIDADES --- */
+/* -------------------------------------------------------------- PROCESSO --- */
 /**
- * Só liste estilos que o Marcus realmente faz. Os estilos abaixo foram
- * inferidos do portfólio público do Instagram (realismo, black & grey,
- * lettering). Adicione/remova conforme confirmação dele.
+ * PROCESSO DE ATENDIMENTO  (processConfig + processData)
+ * Textos editáveis. NÃO invente políticas de pagamento, sinal, prazo ou
+ * disponibilidade. `image` = foto real do portfólio (ambientação visual).
  */
-export type Specialty = {
-  id: string;
-  name: string;
-  description: string;
-  image: string;
+export const processConfig = {
+  title: "Do primeiro contato à tatuagem.",
+  subtitle: "Cada projeto começa com uma conversa.",
+  ctaLabel: "Quero começar meu projeto",
+  ctaButton: "Iniciar atendimento",
 };
 
-export const specialties: Specialty[] = [
-  {
-    id: "realismo",
-    name: "Realismo",
-    description:
-      "Retratos, personagens e composições com profundidade e volume, trabalhados em preto e cinza.",
-    image: "/images/portfolio/placeholder-02.svg",
-  },
-  {
-    id: "black-grey",
-    name: "Black & Grey",
-    description:
-      "Fechamentos e composições em tons de cinza, com contraste marcado e degradês suaves.",
-    image: "/images/portfolio/placeholder-01.svg",
-  },
-  {
-    id: "lettering",
-    name: "Lettering",
-    description:
-      "Escritas autorais e caligrafia com estilo próprio, do delicado ao encorpado.",
-    image: "/images/portfolio/placeholder-03.svg",
-  },
-];
-
-/* -------------------------------------------------------------- PROCESSO --- */
-export const processSteps = [
+export const processData = [
   {
     n: "01",
     title: "Conversa",
-    text: "Você conta a ideia pelo WhatsApp e alinhamos referências, estilo e local do corpo.",
+    text: "O cliente entra em contato e apresenta sua ideia.",
+    image: "/images/portfolio/mascaras-antebraco.webp",
   },
   {
     n: "02",
-    title: "Ideia",
-    text: "Refinamos o conceito juntos — tamanho, composição e o que faz sentido para a pele.",
+    title: "Ideia & referências",
+    text: "O cliente envia referências, explica o que deseja e conversa sobre o projeto.",
+    image: "/images/portfolio/anjo-dinheiro-antebraco.webp",
   },
   {
     n: "03",
     title: "Projeto",
-    text: "O desenho é criado sob medida, de forma autoral, para o seu projeto.",
+    text: "A ideia é analisada e transformada em uma proposta artística.",
+    image: "/images/portfolio/buda-braco.webp",
   },
   {
     n: "04",
     title: "Agendamento",
-    text: "Com o projeto aprovado, reservamos a data e o horário no studio privado.",
+    text: "Após alinhar o projeto, o atendimento segue para o agendamento.",
+    image: "/images/portfolio/leao-aguia-braco.webp",
   },
   {
     n: "05",
     title: "Tatuagem",
-    text: "A sessão acontece com todo o cuidado técnico e de higiene.",
+    text: "O projeto ganha vida na pele.",
+    image: "/images/portfolio/palhaco-perna.webp",
   },
   {
     n: "06",
     title: "Cuidados",
-    text: "Você recebe as orientações de cicatrização para o resultado durar.",
+    text: "Após o procedimento, o cliente recebe as orientações necessárias.",
+    image: "/images/portfolio/querubim-dinheiro.webp",
   },
 ];
 
 /* -------------------------------------------------------------- CUIDADOS --- */
 /**
- * Orientações GERAIS e seguras — não é diagnóstico médico. O Marcus pode
- * substituir por suas próprias orientações.
+ * CUIDADOS COM A TATUAGEM  (aftercareConfig + aftercareData)
+ * ----------------------------------------------------------------------------
+ * Conteúdo GERAL e seguro — não é diagnóstico médico e não inventa
+ * recomendações específicas, produtos ou medicamentos. O Marcus pode revisar
+ * e substituir por suas próprias orientações.
+ *
+ * ESTRUTURA REUTILIZÁVEL: `aftercareData` é uma lista serializável (id, title,
+ * description, items). No futuro, o atendimento 24h pode consumir esses mesmos
+ * dados para responder perguntas básicas sobre cuidados — sem duplicar texto.
+ *
+ * `kind`:
+ *   "default" — bloco normal
+ *   "note"    — bloco com aviso em destaque (ex.: cicatrização)
+ *   "alert"   — bloco discreto de "quando procurar orientação"
  */
-export const aftercare = {
-  antes: [
-    "Durma bem e alimente-se antes da sessão.",
-    "Evite bebida alcoólica nas 24h anteriores.",
-    "Use roupas confortáveis que dêem acesso à região a ser tatuada.",
-  ],
-  durante: [
-    "O local é higienizado e todo material é descartável e individual.",
-    "Avise sempre que precisar de uma pausa — o conforto faz parte do processo.",
-  ],
-  depois: [
-    "Siga as orientações de higienização e hidratação passadas na sessão.",
-    "Evite sol direto, mar, piscina e academia até a pele cicatrizar.",
-    "Não coce nem retire as casquinhas; deixe a cicatrização acontecer naturalmente.",
-    "Em caso de qualquer dúvida durante a cicatrização, fale com o Marcus.",
-  ],
+export const aftercareConfig = {
+  title: "Cuidados com sua tatuagem.",
+  intro:
+    "Orientações gerais para você chegar preparado e cuidar bem do resultado. As instruções específicas do seu caso são passadas pelo tatuador na sessão.",
 };
+
+export type AftercareBlock = {
+  id: string;
+  n: string;
+  title: string;
+  description?: string;
+  items: string[];
+  image?: string;
+  kind?: "default" | "note" | "alert";
+};
+
+export const aftercareData: AftercareBlock[] = [
+  {
+    id: "antes",
+    n: "01",
+    title: "Antes da tatuagem",
+    description: "Chegar bem preparado ajuda na sessão e no resultado.",
+    items: [
+      "Durma bem na noite anterior.",
+      "Alimente-se antes da sessão.",
+      "Mantenha-se hidratado nos dias que antecedem.",
+      "Evite bebida alcoólica nas horas anteriores.",
+      "Use roupas confortáveis que dêem acesso à região.",
+      "Informe o tatuador sobre qualquer questão de saúde relevante.",
+    ],
+    image: "/images/portfolio/anjo-dinheiro-antebraco.webp",
+  },
+  {
+    id: "no-dia",
+    n: "02",
+    title: "No dia da sessão",
+    items: [
+      "Chegue no horário combinado.",
+      "Leve referências quando fizer sentido.",
+      "Comunique qualquer desconforto ou dúvida durante a sessão.",
+      "Siga as orientações do tatuador.",
+    ],
+  },
+  {
+    id: "apos",
+    n: "03",
+    title: "Após a tatuagem",
+    description: "Orientações gerais — siga sempre o que o tatuador indicar para o seu caso.",
+    items: [
+      "Mantenha a área higienizada conforme orientado.",
+      "Proteja a região recém-tatuada.",
+      "Evite exposição solar direta no período recomendado.",
+      "Evite mar, piscina e atividades intensas pelo tempo indicado pelo profissional.",
+      "Use apenas os produtos recomendados pelo tatuador.",
+    ],
+    image: "/images/portfolio/querubim-dinheiro.webp",
+  },
+  {
+    id: "cicatrizacao",
+    n: "04",
+    title: "Cicatrização",
+    description:
+      "O tempo e o processo de cicatrização variam de pessoa para pessoa. Orientações específicas serão fornecidas após o procedimento.",
+    items: [
+      "Cada pele reage no seu próprio tempo.",
+      "Siga as orientações fornecidas na sua sessão.",
+    ],
+    kind: "note",
+  },
+  {
+    id: "orientacao",
+    n: "05",
+    title: "Quando procurar orientação",
+    description:
+      "Diante de qualquer sinal que gere preocupação ou dúvida sobre a cicatrização, procure a orientação de um profissional de saúde.",
+    items: [],
+    kind: "alert",
+  },
+];
 
 /* ------------------------------------------------------------------ FAQ --- */
 /** Respostas neutras — sem inventar preços, prazos ou políticas comerciais. */
@@ -149,20 +213,57 @@ export const faq = [
 
 /* ------------------------------------------------------------ FORMAÇÃO --- */
 /**
- * Deixe vazio até ter dados reais. NÃO invente cursos, instituições ou
- * certificados. Estrutura pronta para preencher:
- *   { course, institution, teacher, year, description, certificate }
+ * FORMAÇÃO & APERFEIÇOAMENTO
+ * ----------------------------------------------------------------------------
+ * Dois níveis:
+ *
+ * 1) formationConfig.pillars — PILARES CONCEITUAIS (sempre exibidos). Falam da
+ *    ABORDAGEM (técnica, estudo, evolução). NÃO são credenciais e não afirmam
+ *    curso/instituição/data específicos. Edite os textos à vontade.
+ *
+ * 2) coursesData — CURSOS REAIS (só aparecem se a lista tiver itens). Enquanto
+ *    estiver vazia, a linha do tempo simplesmente não é exibida — nada falso.
+ *    NÃO invente título, instituição, professor, ano, prêmio ou certificado.
+ */
+export const formationConfig = {
+  title: "Formação & Aperfeiçoamento",
+  intro:
+    "Por trás da arte existe técnica. O trabalho é guiado por estudo constante e busca por evolução a cada projeto.",
+  closing: "A técnica evolui. A arte também.",
+  pillars: [
+    {
+      n: "01",
+      title: "Formação",
+      text: "A base de todo traço: desenho, luz e sombra, composição e leitura da pele.",
+    },
+    {
+      n: "02",
+      title: "Aperfeiçoamento",
+      text: "Estudo contínuo de técnica e referência para elevar cada trabalho.",
+    },
+    {
+      n: "03",
+      title: "Especialização",
+      text: "Aprofundamento no que define o estúdio: black & grey, realismo e lettering.",
+    },
+  ],
+};
+
+/**
+ * CURSOS REAIS — deixe [] até ter dados. Shape editável:
+ *   { title, institution, instructor, year, description, certificate }
+ * `certificate` é o caminho de uma imagem em public/images/ (opcional).
  */
 export type Course = {
-  course: string;
+  title: string;
   institution?: string;
-  teacher?: string;
+  instructor?: string;
   year?: string;
   description?: string;
   certificate?: string;
 };
 
-export const courses: Course[] = [];
+export const coursesData: Course[] = [];
 
 /* ---------------------------------------------------------- DEPOIMENTOS --- */
 /**

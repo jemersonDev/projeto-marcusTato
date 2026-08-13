@@ -168,3 +168,157 @@ imagem em pixels. Consequências:
 Ao trocar os placeholders pelas fotos reais, atualize width/height de cada uma
 e o ritmo se ajusta sozinho. Sem JS, a galeria cai para um grid simples com as
 proporções naturais preservadas (imagens continuam visíveis).
+
+---
+
+## Sobre + Especialidades
+
+Componentes:
+- src/sections/About.tsx — seção "Sobre" (editorial assimétrica)
+- src/sections/Specialties.tsx — especialidades (hover interativo no desktop,
+  cards editoriais no mobile)
+
+### Como alterar os dados do Marcus (Sobre)
+Edite `aboutConfig` em src/data/content.ts:
+- paragraphs: a trajetoria/experiencia (escreva livremente)
+- philosophy: frase-conceito em destaque (ou "" para esconder)
+- vision: frase opcional (vazio = nao aparece)
+- stats: SOMENTE dados reais, ex.: [{ value: "10", label: "anos tatuando" }].
+  Deixe [] para nao mostrar nada. Nunca invente numeros.
+- image: foto do artista. Coloque a real em public/images/artist/ e aponte aqui.
+Nome, funcoes e marca vem de `artistConfig` (src/config/site.ts).
+
+### Como adicionar/remover especialidades
+Edite `specialties` em src/data/specialties.ts. Cada item:
+  { id, name, description, image }  (image = foto real do portfolio)
+So liste estilos CONFIRMADOS. No fim do arquivo ha um catalogo comentado
+(Portrait, Fine Line, Fechamento, Personagens, Oriental, Old School) — quando
+o Marcus confirmar, descomente e aponte uma imagem. Se a lista ficar vazia, a
+secao inteira some.
+
+### Interacao
+- Desktop: passar o mouse sobre um estilo troca a imagem (cross-fade GSAP),
+  destaca o texto e revela a descricao; painel com parallax sutil.
+- Mobile: cards verticais com image-reveal (clip-path) e stagger no scroll.
+- Respeita prefers-reduced-motion.
+
+---
+
+## Galeria Cinematográfica (narrativa visual)
+
+NÃO é um segundo portfólio. O portfólio é grade/exploração; esta é uma
+narrativa curada em scroll (poucas obras, ritmo editorial, obra principal).
+
+Componentes:
+- src/sections/CinematicGallery.tsx — orquestra a narrativa
+- src/components/gallery/GalleryItem.tsx — bloco assimétrico (left/right/full)
+- src/components/gallery/GalleryFeature.tsx — a OBRA PRINCIPAL (quase tela cheia)
+- src/components/gallery/GalleryReveal.tsx — wrapper de reveal (clip-path)
+- src/hooks/useParallax.ts — parallax reutilizavel (scrub)
+
+### Como alterar as imagens
+Edite `cinematicGalleryData` em src/data/cinematic.ts. Cada item:
+  { id, image, width, height, title, style, layout }
+- image: foto real em public/images/portfolio/
+- width/height: dimensoes REAIS (mantem proporcao, sem distorcer)
+- layout: "right" | "left" | "feature" | "full"
+    right/left = imagem de um lado, legenda do outro
+    feature    = obra principal, quase tela cheia, cresce no scroll
+    full       = largura total (bom para horizontais)
+- style: rotulo exibido (ex.: "Realismo")
+Para trocar qual e a obra principal, mude o `layout` de um item para "feature".
+
+### Animacoes e acessibilidade
+- reveal por clip-path, scale no feature, parallax sutil, stagger, hover leve no desktop
+- mobile nao depende de hover (tudo por scroll)
+- respeita prefers-reduced-motion: imagens continuam visiveis e a secao funciona
+- next/image com lazy loading (imagens nao carregam todas de uma vez)
+
+---
+
+## Processo de Atendimento
+
+Componentes:
+- src/sections/Process.tsx — jornada (painel fixo no desktop, sequencia no mobile)
+- src/components/process/ProcessStep.tsx — uma etapa (variant desktop/mobile)
+
+### Como alterar as etapas
+Edite em src/data/content.ts:
+- processConfig: title, subtitle, ctaLabel, ctaButton
+- processData: lista de etapas { n, title, text, image }
+  - text: editavel livremente (NAO invente pagamento, sinal, prazo, disponibilidade)
+  - image: foto real em public/images/portfolio/
+Adicionar/remover etapa = adicionar/remover item no array (a linha de progresso
+e a contagem se ajustam sozinhas).
+
+### Comportamento
+- Desktop: painel de imagem FIXO (sticky) que troca conforme a etapa ativa,
+  numero grande, linha de progresso que enche, etapa ativa destacada.
+  (A secao NAO usa overflow-hidden — isso quebraria o position:sticky.)
+- Mobile: sequencia vertical com trilha continua, numero, imagem e texto por etapa.
+- CTA final "INICIAR ATENDIMENTO" abre o WhatsApp (pode ser repontado para o
+  fluxo de orcamento quando ele existir — veja o comentario em Process.tsx).
+- Respeita prefers-reduced-motion (conteudo visivel, sem depender de animacao).
+
+---
+
+## Formação & Aperfeiçoamento
+
+Componentes:
+- src/sections/Formation.tsx — orquestra pilares + linha do tempo + mensagem final
+- src/components/formation/FormationPillars.tsx — 3 pilares conceituais (linha desenhada, numeros entrando)
+- src/components/formation/CourseTimeline.tsx — linha do tempo de cursos REAIS (so aparece se houver dados)
+
+### Dois niveis (importante)
+1. formationConfig.pillars (em src/data/content.ts): pilares CONCEITUAIS sempre
+   visiveis (Formacao/Aperfeicoamento/Especializacao). Falam da abordagem, NAO
+   sao credenciais — pode editar os textos.
+2. coursesData (em src/data/content.ts): cursos REAIS. Enquanto a lista estiver
+   vazia ([]), a linha do tempo NAO aparece (nada falso no site).
+
+### Como adicionar um novo curso
+Edite `coursesData` em src/data/content.ts e adicione um objeto:
+  {
+    title: "Nome do curso",
+    institution: "Instituicao",   // opcional
+    instructor: "Professor",       // opcional
+    year: "2024",                  // opcional
+    description: "O que foi o curso", // opcional
+    certificate: "/images/cert-xyz.jpg" // opcional (imagem em public/images/)
+  }
+Assim que houver ao menos 1 item, a linha do tempo interativa aparece sozinha
+(underline animado, selecao revela descricao e certificado). NAO invente dados.
+
+### Auditoria
+- overflow 0 em todos os breakpoints (corrigido: titulos display agora quebram/
+  hifenizam palavras longas como "APERFEICOAMENTO" via overflow-wrap + hyphens).
+- respeita prefers-reduced-motion (linhas e numeros ficam visiveis sem animar).
+
+---
+
+## Cuidados com a Tatuagem
+
+Componentes:
+- src/sections/Aftercare.tsx — orquestra os blocos + linha de progresso (scroll)
+- src/components/aftercare/AftercareBlock.tsx — um bloco (default/note/alert)
+
+### Como alterar as orientacoes
+Edite em src/data/content.ts:
+- aftercareConfig: title, intro
+- aftercareData: lista de blocos { id, n, title, description?, items[], image?, kind? }
+  - kind: "default" | "note" (destaque suave) | "alert" (discreto)
+  - items: orientacoes gerais (uma por linha)
+  - image: foto real do portfolio (acento visual, opcional)
+Regras: conteudo GERAL e seguro. NAO invente recomendacoes especificas,
+produtos, medicamentos ou diagnosticos. O bloco de cicatrizacao ja traz a frase
+"Orientacoes especificas serao fornecidas apos o procedimento". O bloco de
+alerta e discreto e apenas orienta procurar um profissional de saude.
+
+### Reuso pelo atendimento 24h (futuro)
+aftercareData e uma lista serializavel (id/title/items). O sistema de
+atendimento 24h podera consumir esses mesmos dados para responder perguntas
+basicas sobre cuidados — sem duplicar texto. (Integracao nao feita agora.)
+
+### Auditoria
+- overflow 0 em todos os breakpoints; reduced-motion mantem tudo visivel.
+- hierarquia semantica (h2/h3/ul/li); imagens de acento com alt vazio (decorativas).

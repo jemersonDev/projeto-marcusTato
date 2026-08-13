@@ -9,7 +9,7 @@
 
 export const artistConfig = {
   name: "Marcus Henrique",
-  brand: "Marcus Tattoo",
+  brand: "Marcus tattoo. Ink",
   roles: ["Tatuador", "Desenhista", "Artista"],
   tagline: "Arte que permanece na pele.",
   subtitle: "Tatuagem autoral, técnica e identidade em cada detalhe.",

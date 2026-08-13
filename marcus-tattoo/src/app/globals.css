@@ -49,6 +49,10 @@ body {
   letter-spacing: -0.02em;
   line-height: 0.92;
   text-transform: uppercase;
+  /* evita que palavras longas (ex.: "APERFEIÇOAMENTO") estourem a largura
+     em telas pequenas — quebra e hifeniza quando necessário (lang pt-BR) */
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 /* Eyebrow / labels: sans espaçada */
