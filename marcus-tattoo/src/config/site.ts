@@ -35,7 +35,7 @@ export const contactConfig = {
  * tudo que precisa mudar está aqui.
  */
 export const locationConfig = {
-  name: "Marcus Tattoo",
+  name: "Marcus tattoo.Ink",
   street: "Rua Francisca Raimunda Gomes, 716",
   reference: "Esquina com Avenida Ramid Mauad, 209",
   neighborhood: "Pacaembu II",
