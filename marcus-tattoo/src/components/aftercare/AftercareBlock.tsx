@@ -21,7 +21,7 @@ export default function AftercareBlock({ block, index }: { block: Block; index: 
         className="border-t border-ash pt-10 md:pt-12 mt-4 grid grid-cols-1 lg:grid-cols-12 gap-6"
       >
         <div className="lg:col-span-2">
-          <span data-care-num className="eyebrow text-smoke/60">
+          <span data-care-num className="eyebrow text-smoke/90">
             {block.n}
           </span>
         </div>

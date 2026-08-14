@@ -29,6 +29,20 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
     gsap.ticker.add(raf);
     gsap.ticker.lagSmoothing(0);
 
+    /**
+     * Recalcula as posições de TODOS os ScrollTriggers da página.
+     * Necessário porque esta é uma página longa com várias seções: a troca
+     * da fonte fallback pela fonte final (next/font) pode alterar levemente
+     * a altura de blocos de texto em qualquer seção, o que desatualiza as
+     * posições de início/fim já calculadas pelos triggers mais abaixo.
+     * Sem isso, animações em seções distantes do topo podem não disparar
+     * corretamente dependendo de como o usuário rolou a página.
+     */
+    const refresh = () => ScrollTrigger.refresh();
+    document.fonts?.ready?.then(refresh).catch(() => {});
+    window.addEventListener("load", refresh);
+    const refreshTimer = window.setTimeout(refresh, 600); // rede de segurança
+
     // Rolagem suave para âncoras (#sobre, #trabalhos, etc.)
     const onClick = (e: MouseEvent) => {
       const target = (e.target as HTMLElement)?.closest('a[href^="#"]');
@@ -44,6 +58,8 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
 
     return () => {
       document.removeEventListener("click", onClick);
+      window.removeEventListener("load", refresh);
+      window.clearTimeout(refreshTimer);
       gsap.ticker.remove(raf);
       lenis.destroy();
     };

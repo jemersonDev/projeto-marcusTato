@@ -17,7 +17,7 @@ export default function GalleryItem({ item, index }: { item: CinematicItem; inde
 
   const caption = (
     <div className={`flex flex-col justify-center ${isFull ? "" : "lg:h-full"}`}>
-      <span className="eyebrow text-smoke/70 mb-3">
+      <span className="eyebrow text-smoke/90 mb-3">
         {String(index + 1).padStart(2, "0")} — {item.style}
       </span>
       <h3 className="display text-bone text-4xl md:text-5xl">{item.title}</h3>

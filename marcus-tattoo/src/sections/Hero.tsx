@@ -39,6 +39,7 @@ export default function Hero() {
           alt="Tatuagem em destaque — Marcus Tattoo"
           fill
           priority
+          sizes="100vw"
           className="hero-img object-cover"
         />
         {/* Overlay escuro sofisticado (duplo, para legibilidade) */}
@@ -50,11 +51,14 @@ export default function Hero() {
       <div className="container-x relative z-10 pb-20 md:pb-28">
         <p className="eyebrow mb-6">Uberaba • MG</p>
 
-        <h1 className="display text-bone text-[15vw] sm:text-[11vw] lg:text-[8.5rem] leading-[0.85]">
-          <span className="block overflow-hidden">
+        <h1
+          aria-label={artistConfig.brand}
+          className="display text-bone text-[15vw] sm:text-[11vw] lg:text-[8.5rem] leading-[0.85]"
+        >
+          <span className="block overflow-hidden" aria-hidden="true">
             <span className="hero-line block">Marcus</span>
           </span>
-          <span className="block overflow-hidden">
+          <span className="block overflow-hidden" aria-hidden="true">
             <span className="hero-line block">Tattoo</span>
           </span>
         </h1>

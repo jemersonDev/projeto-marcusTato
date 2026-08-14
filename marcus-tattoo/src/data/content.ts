@@ -179,35 +179,52 @@ export const aftercareData: AftercareBlock[] = [
 ];
 
 /* ------------------------------------------------------------------ FAQ --- */
-/** Respostas neutras — sem inventar preços, prazos ou políticas comerciais. */
+/**
+ * PERGUNTAS FREQUENTES  (faqData — importado como `faq`)
+ * Respostas neutras e gerais — NUNCA inventar preços, horários, políticas de
+ * pagamento, prazo de resposta ou disponibilidade. Reutilizado pelo
+ * atendimento 24h (import { faq as faqData }) — editar aqui atualiza os dois.
+ */
 export const faq = [
   {
-    q: "Como funciona o orçamento?",
+    q: "Como funciona o processo para fazer uma tatuagem?",
+    a: "Tudo começa com uma conversa sobre a ideia. Depois vem o projeto, o agendamento e a sessão — veja o passo a passo completo na seção Processo.",
+  },
+  {
+    q: "Como solicitar um orçamento?",
     a: "O orçamento é feito individualmente. Envie a ideia, referências, estilo, local do corpo e tamanho aproximado pelo WhatsApp para receber uma avaliação.",
   },
   {
-    q: "Preciso enviar referência?",
-    a: "Ajuda bastante. Qualquer imagem que represente a ideia, o estilo ou o clima que você quer já é um bom ponto de partida.",
+    q: "Posso enviar uma referência?",
+    a: "Pode, e ajuda bastante. Qualquer imagem que represente a ideia, o estilo ou o clima que você quer já é um bom ponto de partida.",
+  },
+  {
+    q: "Como escolher o tamanho da tatuagem?",
+    a: "O tamanho é definido junto com o Marcus, considerando a ideia, o local do corpo e o nível de detalhe do projeto.",
+  },
+  {
+    q: "Quais estilos são trabalhados?",
+    a: "O estúdio trabalha principalmente com realismo, black & grey e lettering. Veja exemplos na seção Especialidades.",
   },
   {
     q: "Como funciona o agendamento?",
     a: "O studio é privado e atende somente com horário agendado. Após aprovar o projeto, combinamos a data pelo WhatsApp.",
   },
   {
-    q: "Como escolho o estilo?",
-    a: "Se estiver em dúvida, é só descrever a ideia. A partir dela conversamos sobre o estilo que melhor se encaixa no que você quer.",
-  },
-  {
-    q: "Como devo me preparar?",
-    a: "Durma bem, alimente-se antes e evite álcool nas 24h anteriores. Use roupa confortável que dê acesso à região.",
-  },
-  {
-    q: "Quais cuidados devo ter depois?",
-    a: "Você recebe as orientações de cicatrização ao final da sessão. Em geral: higienizar, hidratar e evitar sol, mar e piscina até cicatrizar.",
-  },
-  {
     q: "Onde fica o estúdio?",
     a: "No Pacaembu II, em Uberaba/MG. O endereço completo e o mapa estão na seção de localização.",
+  },
+  {
+    q: "Como devo me preparar para a sessão?",
+    a: "Durma bem, alimente-se antes e evite álcool nas horas anteriores. Use roupa confortável que dê acesso à região.",
+  },
+  {
+    q: "Quais cuidados devo ter depois da tatuagem?",
+    a: "Você recebe as orientações de cicatrização ao final da sessão. Veja as orientações gerais na seção Cuidados.",
+  },
+  {
+    q: "Como falar diretamente com o Marcus?",
+    a: "Pelo WhatsApp, ou iniciando o atendimento 24h aqui no site — ele também pode te encaminhar diretamente para o Marcus.",
   },
 ];
 
@@ -267,14 +284,25 @@ export const coursesData: Course[] = [];
 
 /* ---------------------------------------------------------- DEPOIMENTOS --- */
 /**
- * Deixe vazio até ter depoimentos REAIS. A seção some sozinha quando vazia.
- *   { name, photo, rating (1-5), text }
+ * DEPOIMENTOS  (testimonialsData)
+ * ----------------------------------------------------------------------------
+ * NÃO INVENTAR depoimentos, nomes ou avaliações. Deixe [] até o Marcus
+ * fornecer depoimentos REAIS (com autorização de uso). A seção inteira some
+ * sozinha enquanto a lista estiver vazia — nada fictício é exibido.
+ *
+ * PARA ADICIONAR UM DEPOIMENTO REAL:
+ *   { name, text, date?, image?, source? }
+ *   - image: só use se houver uma foto real do cliente e autorização de uso.
+ *     Sem autorização, deixe o campo de fora (undefined) — nunca preencha com
+ *     foto genérica/aleatória.
+ *   - source: de onde veio (ex.: "Instagram", "Google", "WhatsApp"), opcional.
  */
 export type Testimonial = {
   name: string;
-  photo?: string;
-  rating?: number;
   text: string;
+  date?: string;
+  image?: string;
+  source?: string;
 };
 
-export const testimonials: Testimonial[] = [];
+export const testimonialsData: Testimonial[] = [];

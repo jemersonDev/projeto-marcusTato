@@ -61,11 +61,11 @@ export default function CourseTimeline() {
                 aria-pressed={isActive}
               >
                 {c.year && (
-                  <span className="eyebrow text-smoke/70">{c.year}</span>
+                  <span className="eyebrow text-smoke/90">{c.year}</span>
                 )}
                 <h4
                   className={`display text-2xl md:text-3xl mt-1 relative inline-block transition-colors ${
-                    isActive ? "text-bone" : "text-smoke/60 group-hover:text-bone"
+                    isActive ? "text-bone" : "text-smoke/70 group-hover:text-bone"
                   }`}
                 >
                   {c.title}

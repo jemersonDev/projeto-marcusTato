@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Oswald, Inter } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
-import { artistConfig, locationConfig, seoConfig, fullAddress } from "@/config/site";
+import { artistConfig, locationConfig, siteConfig } from "@/config/site";
 
 // Display: Oswald (condensada, editorial, forte). Body: Inter (limpa).
 const display = Oswald({
@@ -17,35 +17,49 @@ const body = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(seoConfig.siteUrl),
-  title: seoConfig.title,
-  description: seoConfig.description,
-  keywords: seoConfig.keywords,
+  metadataBase: new URL(siteConfig.url),
+  title: siteConfig.title,
+  description: siteConfig.description,
+  keywords: siteConfig.keywords,
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     locale: "pt_BR",
-    url: seoConfig.siteUrl,
+    url: siteConfig.url,
     siteName: artistConfig.brand,
-    title: seoConfig.title,
-    description: seoConfig.description,
-    images: [{ url: seoConfig.ogImage, width: 1200, height: 630 }],
+    title: siteConfig.title,
+    description: siteConfig.description,
+    images: [{ url: siteConfig.ogImage, width: 1200, height: 630, alt: siteConfig.title }],
   },
-  robots: { index: true, follow: true },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.title,
+    description: siteConfig.description,
+    images: [siteConfig.ogImage],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true },
+  },
 };
 
-// JSON-LD — SEO local. Só inclui campos com dados reais.
+/**
+ * JSON-LD — SEO local (Schema.org). Só campos com dados REAIS e confirmados:
+ * nome, endereço e descrição do estúdio. NUNCA telefone, horário, avaliações,
+ * preços ou coordenadas que não foram fornecidos pelo Marcus.
+ */
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "TattooParlor",
   name: locationConfig.name,
-  description: seoConfig.description,
-  image: `${seoConfig.siteUrl}${seoConfig.ogImage}`,
-  url: seoConfig.siteUrl,
+  description: siteConfig.description,
+  image: `${siteConfig.url}${siteConfig.ogImage}`,
+  url: siteConfig.url,
   sameAs: [artistConfig.instagramUrl],
   address: {
     "@type": "PostalAddress",
-    streetAddress: locationConfig.street,
+    streetAddress: `${locationConfig.street}, ${locationConfig.reference}`,
     addressLocality: locationConfig.city,
     addressRegion: locationConfig.state,
     addressCountry: "BR",

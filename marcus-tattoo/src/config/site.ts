@@ -9,7 +9,7 @@
 
 export const artistConfig = {
   name: "Marcus Henrique",
-  brand: "Marcus tattoo. Ink",
+  brand: "Marcus Tattoo",
   roles: ["Tatuador", "Desenhista", "Artista"],
   tagline: "Arte que permanece na pele.",
   subtitle: "Tatuagem autoral, técnica e identidade em cada detalhe.",
@@ -69,11 +69,21 @@ export const googleMapsDirectionsUrl = `https://www.google.com/maps/dir/?api=1&d
 )}`;
 
 /** SEO / metadata. Troque siteUrl pelo domínio real quando publicar. */
-export const seoConfig = {
-  siteUrl: "https://marcustattoo.ink", // TODO: confirmar domínio final na Hostinger
-  title: "Marcus Tattoo — Tatuagem autoral em Uberaba/MG",
+/**
+ * CONFIGURAÇÃO CENTRAL DE SEO/SITE  (siteConfig)
+ * ----------------------------------------------------------------------------
+ * `url` é a ÚNICA fonte do domínio do site — usado em metadata, canonical,
+ * Open Graph, Twitter Card, JSON-LD, sitemap.xml e robots.txt (todos lêem
+ * daqui). Para trocar o domínio quando a Hostinger estiver configurada,
+ * troque APENAS este valor.
+ */
+export const siteConfig = {
+  url: "https://marcustattoo.ink", // TODO: confirmar domínio final na Hostinger
+  title: "Marcus Tattoo | Tatuagem em Uberaba - MG",
+  // Contém naturalmente: Marcus Tattoo, tatuagem, Uberaba, Minas Gerais,
+  // tatuador, atendimento, orçamento — sem repetição forçada (keyword stuffing).
   description:
-    "Estúdio de tatuagem autoral de Marcus Henrique em Uberaba/MG. Realismo, black & grey e lettering. Studio privado, atendimento com horário agendado.",
+    "Marcus Tattoo: estúdio de tatuagem autoral em Uberaba, Minas Gerais. Tatuador especializado em realismo e black & grey. Solicite seu orçamento e agende o atendimento.",
   ogImage: "/images/og.jpg", // adicione uma imagem 1200x630 em public/images/
   keywords: [
     "tatuagem Uberaba",
@@ -83,4 +93,27 @@ export const seoConfig = {
     "Marcus Tattoo",
     "estúdio de tatuagem Uberaba MG",
   ],
+};
+
+/**
+ * REDES SOCIAIS  (socialConfig)
+ * ----------------------------------------------------------------------------
+ * Reaproveita artistConfig — não duplica a URL do Instagram. Adicione outras
+ * redes SOMENTE quando o Marcus fornecer (ex.: youtube, tiktok, facebook).
+ * Nunca inventar um perfil que não foi confirmado.
+ */
+export const socialConfig = {
+  instagram: artistConfig.instagramUrl,
+};
+
+/**
+ * LEGAL / RODAPÉ
+ * ----------------------------------------------------------------------------
+ * Texto de copyright editável. `privacyPolicyUrl` fica null até existir uma
+ * página real — nesse caso o Footer não exibe o link (não inventa texto
+ * jurídico nem aponta para uma página que não existe).
+ */
+export const legalConfig = {
+  copyright: `© ${new Date().getFullYear()} ${artistConfig.brand}. Todos os direitos reservados.`,
+  privacyPolicyUrl: null as string | null,
 };

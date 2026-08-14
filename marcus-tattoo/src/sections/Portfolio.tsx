@@ -41,7 +41,7 @@ export default function PortfolioSection() {
             Portfólio
           </p>
           <h2 data-reveal className="display text-bone text-5xl md:text-7xl">
-            Trabalhos que falam por si.
+            O portfólio completo.
           </h2>
           <p data-reveal className="text-smoke mt-6 text-base md:text-lg font-light max-w-xl">
             Cada peça é autoral e feita sob medida. Clique em qualquer trabalho para ver em tela cheia.

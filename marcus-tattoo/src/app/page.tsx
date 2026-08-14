@@ -5,9 +5,16 @@ import About from "@/sections/About";
 import Specialties from "@/sections/Specialties";
 import PortfolioSection from "@/sections/Portfolio";
 import CinematicGallery from "@/sections/CinematicGallery";
+import VideoSection from "@/sections/Videos";
 import Process from "@/sections/Process";
 import Formation from "@/sections/Formation";
 import Aftercare from "@/sections/Aftercare";
+import Location from "@/sections/Location";
+import Faq from "@/sections/Faq";
+import Testimonials from "@/sections/Testimonials";
+import FinalCta from "@/sections/FinalCta";
+import Footer from "@/components/footer/Footer";
+import ChatAssistant from "@/components/chat/ChatAssistant";
 
 export default function Home() {
   return (
@@ -20,19 +27,17 @@ export default function Home() {
         <Specialties />
         <PortfolioSection />
         <CinematicGallery />
+        <VideoSection />
         <Process />
         <Formation />
         <Aftercare />
-
-        {/*
-          PRÓXIMAS SEÇÕES (cada uma em src/sections/):
-            <Location />       — Localização + Google Maps
-            <Faq />            — FAQ
-            <Testimonials />   — Depoimentos (esconde se vazio)
-            <FinalCta />       — CTA final
-            <Footer />         — Rodapé
-        */}
+        <Location />
+        <Faq />
+        <Testimonials />
+        <FinalCta />
       </main>
+      <Footer />
+      <ChatAssistant />
     </>
   );
 }

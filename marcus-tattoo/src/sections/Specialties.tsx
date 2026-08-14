@@ -111,7 +111,7 @@ export default function Specialties() {
                   >
                     <span
                       className={`eyebrow text-xs transition-colors ${
-                        isActive ? "text-bone" : "text-smoke/50"
+                        isActive ? "text-bone" : "text-smoke"
                       }`}
                     >
                       0{i + 1}
@@ -120,7 +120,7 @@ export default function Specialties() {
                       className={`display text-5xl xl:text-6xl transition-all duration-300 ${
                         isActive
                           ? "text-bone translate-x-2"
-                          : "text-smoke/40 group-hover:text-smoke"
+                          : "text-smoke/70 group-hover:text-smoke"
                       }`}
                     >
                       {s.name}

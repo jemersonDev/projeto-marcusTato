@@ -61,21 +61,21 @@ export default function ProcessStep({
     >
       <span
         className={`eyebrow mb-4 transition-colors duration-300 ${
-          active ? "text-bone" : "text-smoke/50"
+          active ? "text-bone" : "text-smoke"
         }`}
       >
         Etapa {step.n}
       </span>
       <h3
         className={`display text-5xl xl:text-6xl mb-5 transition-colors duration-300 ${
-          active ? "text-bone" : "text-smoke/40"
+          active ? "text-bone" : "text-smoke/70"
         }`}
       >
         {step.title}
       </h3>
       <p
         className={`text-lg font-light leading-relaxed max-w-md transition-colors duration-300 ${
-          active ? "text-smoke" : "text-smoke/40"
+          active ? "text-smoke" : "text-smoke/90"
         }`}
       >
         {step.text}

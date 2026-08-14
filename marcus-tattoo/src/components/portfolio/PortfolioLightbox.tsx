@@ -84,7 +84,10 @@ export default function PortfolioLightbox({ items, index, onClose, onNavigate }:
   const onTouchEnd = (e: React.TouchEvent) => {
     if (touchStartX.current === null) return;
     const dx = e.changedTouches[0].clientX - touchStartX.current;
-    if (Math.abs(dx) > 50) dx < 0 ? goNext() : goPrev();
+    if (Math.abs(dx) > 50) {
+      if (dx < 0) goNext();
+      else goPrev();
+    }
     touchStartX.current = null;
   };
 

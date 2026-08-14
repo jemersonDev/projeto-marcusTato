@@ -29,7 +29,7 @@ export default function About() {
               />
             </div>
             {/* detalhe tipográfico sob a imagem */}
-            <p className="eyebrow mt-4 text-smoke/70">{artistConfig.brand} — Uberaba/MG</p>
+            <p className="eyebrow mt-4 text-smoke/90">{artistConfig.brand} — Uberaba/MG</p>
           </div>
 
           {/* Texto editorial */}

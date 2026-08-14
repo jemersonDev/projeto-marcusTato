@@ -8,7 +8,6 @@ import ProcessStep from "@/components/process/ProcessStep";
 import { processConfig, processData } from "@/data/content";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
-import { whatsappLink } from "@/lib/whatsapp";
 
 export default function Process() {
   const reduced = useReducedMotion();
@@ -19,10 +18,6 @@ export default function Process() {
   const stepsRef = useRef<HTMLDivElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
   const mobileRef = useRef<HTMLDivElement>(null);
-
-  const cta = whatsappLink(
-    `Olá, Marcus! ${processConfig.ctaLabel}.`
-  ); // futuramente pode apontar para o fluxo de orçamento
 
   // DESKTOP: cada etapa define a etapa "ativa" conforme passa pelo centro
   useEffect(() => {
@@ -182,16 +177,13 @@ export default function Process() {
           <p className="display text-bone text-3xl md:text-4xl max-w-2xl">
             {processConfig.ctaLabel}
           </p>
-          {cta && (
-            <a
-              href={cta}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-bone text-ink px-8 py-4 text-sm tracking-[0.15em] uppercase hover:bg-white transition-colors"
-            >
-              {processConfig.ctaButton}
-            </a>
-          )}
+          <button
+            type="button"
+            onClick={() => window.dispatchEvent(new Event("marcus:open-assistant"))}
+            className="bg-bone text-ink px-8 py-4 text-sm tracking-[0.15em] uppercase hover:bg-white transition-colors"
+          >
+            {processConfig.ctaButton}
+          </button>
         </div>
       </div>
     </section>

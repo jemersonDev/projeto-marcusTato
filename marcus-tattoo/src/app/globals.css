@@ -99,3 +99,10 @@ body {
   margin-inline: auto;
   padding-inline: clamp(1.25rem, 5vw, 5rem);
 }
+
+/* Entrada de mensagens do assistente (respeita reduced-motion via @media acima) */
+@keyframes chatIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+.chat-msg { animation: chatIn 0.35s ease both; }

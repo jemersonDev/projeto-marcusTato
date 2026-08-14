@@ -39,7 +39,7 @@ export default function PortfolioFilters({ active, available, counts, onChange }
           >
             {f.label}
             {f.id !== "todos" && (
-              <sup className="ml-1 text-[0.55rem] text-smoke/70">
+              <sup className="ml-1 text-[0.55rem] text-smoke/90">
                 {counts[f.id] ?? 0}
               </sup>
             )}
