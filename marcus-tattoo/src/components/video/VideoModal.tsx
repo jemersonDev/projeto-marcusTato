@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import type { VideoItem } from "@/data/video";
+import { useFocusTrap } from "@/hooks/useFocusTrap";
 
 /**
  * Modal do player. Usa <video controls> NATIVO (play, pause, volume,
@@ -22,6 +23,7 @@ export default function VideoModal({
   const overlayRef = useRef<HTMLDivElement>(null);
   const closeBtnRef = useRef<HTMLButtonElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  useFocusTrap(overlayRef);
 
   // ESC fecha
   useEffect(() => {
@@ -54,6 +56,7 @@ export default function VideoModal({
       ref={overlayRef}
       role="dialog"
       aria-modal="true"
+      data-lenis-prevent
       aria-label={`${video.title} — ${video.category}`}
       className="fixed inset-0 z-[90] bg-ink flex flex-col"
       onClick={(e) => {
@@ -103,6 +106,8 @@ export default function VideoModal({
             <iframe
               src={video.embedUrl}
               title={video.title}
+              loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
               className="h-full w-full"
               style={{ border: 0 }}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

@@ -60,6 +60,8 @@ function greeting(nextId: number): State {
 function validate(step: QuoteStep, value: string): string | null {
   const v = value.trim();
   if (step.required && !v) return "Este campo é obrigatório.";
+  const max = step.multiline ? 500 : step.type === "tel" ? 20 : 120;
+  if (v.length > max) return `Texto muito longo (máximo ${max} caracteres).`;
   if (step.type === "tel" && v) {
     const digits = v.replace(/\D/g, "");
     if (digits.length < 10 || digits.length > 13)

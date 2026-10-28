@@ -103,6 +103,8 @@ export default function Header() {
           open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
         aria-hidden={!open}
+        inert={!open}
+        data-lenis-prevent
       >
         <div className="container-x flex items-center justify-between py-5">
           <span className="display text-bone text-lg">{artistConfig.brand}</span>

@@ -53,6 +53,8 @@ export default function ChatInput({
           onChange={(e) => setValue(e.target.value)}
           onKeyDown={onKeyDown}
           rows={3}
+          maxLength={500}
+          autoComplete="off"
           placeholder={step.placeholder}
           aria-label={step.question}
           aria-invalid={!!error}
@@ -63,6 +65,8 @@ export default function ChatInput({
           ref={focusOnMount}
           type={step.type === "tel" ? "tel" : "text"}
           inputMode={step.type === "tel" ? "tel" : "text"}
+          maxLength={step.type === "tel" ? 20 : 120}
+          autoComplete={step.key === "nome" ? "name" : step.type === "tel" ? "tel" : "off"}
           value={value}
           onChange={(e) => setValue(e.target.value)}
           onKeyDown={onKeyDown}

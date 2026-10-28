@@ -5,6 +5,7 @@ import { gsap } from "gsap";
 import ChatWindow from "./ChatWindow";
 import { chatConfig } from "@/config/chat";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { useFocusTrap } from "@/hooks/useFocusTrap";
 
 /**
  * Raiz do atendimento 24h: botão flutuante "Iniciar atendimento" + painel.
@@ -18,6 +19,7 @@ export default function ChatAssistant() {
   const [open, setOpen] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
+  useFocusTrap(panelRef, open);
 
   const openChat = useCallback(() => setOpen(true), []);
   const closeChat = useCallback(() => setOpen(false), []);
@@ -92,6 +94,7 @@ export default function ChatAssistant() {
           ref={panelRef}
           role="dialog"
           aria-modal="true"
+          data-lenis-prevent
           aria-label={chatConfig.name}
           className="fixed z-[80] bg-ink flex flex-col inset-0 h-[100dvh] sm:inset-auto sm:bottom-6 sm:right-6 sm:h-[600px] sm:max-h-[85vh] sm:w-[400px] sm:border sm:border-ash sm:shadow-2xl"
         >

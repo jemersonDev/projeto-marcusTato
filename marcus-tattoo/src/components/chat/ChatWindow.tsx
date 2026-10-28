@@ -45,7 +45,13 @@ export default function ChatWindow({ onClose }: { onClose: () => void }) {
       </header>
 
       {/* Mensagens */}
-      <div className="flex-1 min-h-0 overflow-y-auto px-5 py-5 flex flex-col gap-3">
+      <div
+        role="log"
+        aria-live="polite"
+        aria-label="Conversa"
+        data-lenis-prevent
+        className="flex-1 min-h-0 overflow-y-auto px-5 py-5 flex flex-col gap-3"
+      >
         {state.messages.map((m) => (
           <ChatMessage key={m.id} message={m} />
         ))}

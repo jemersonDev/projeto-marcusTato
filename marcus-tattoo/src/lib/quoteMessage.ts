@@ -20,5 +20,6 @@ export function buildQuoteMessage(data: QuoteData): string {
     lines.push("", "Tenho uma imagem de referência para enviar.");
   }
 
-  return lines.join("\n");
+  // limite de segurança: links do WhatsApp têm tamanho máximo
+  return lines.join("\n").slice(0, 1500);
 }
