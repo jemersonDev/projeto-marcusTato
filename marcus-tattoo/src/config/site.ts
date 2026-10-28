@@ -78,7 +78,7 @@ export const googleMapsDirectionsUrl = `https://www.google.com/maps/dir/?api=1&d
  * troque APENAS este valor.
  */
 export const siteConfig = {
-  url: "https://marcustattoo.ink", // TODO: confirmar domínio final na Hostinger
+  url: "https://marcustattooink.com.br",
   title: "Marcus Tattoo | Tatuagem em Uberaba - MG",
   // Contém naturalmente: Marcus Tattoo, tatuagem, Uberaba, Minas Gerais,
   // tatuador, atendimento, orçamento — sem repetição forçada (keyword stuffing).
