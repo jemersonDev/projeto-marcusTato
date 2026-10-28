@@ -11,12 +11,15 @@ function Photo({
   height,
   label,
   alt,
+  ratio,
 }: {
   src: string;
   width: number;
   height: number;
   label: string;
   alt: string;
+  /** proporção (largura/altura) comum às duas fotos do par */
+  ratio: number;
 }) {
   return (
     <figure data-reveal className="relative overflow-hidden bg-carbon">
@@ -26,7 +29,8 @@ function Photo({
         width={width}
         height={height}
         sizes="(max-width: 768px) 50vw, 400px"
-        className="w-full h-auto aspect-[3/5] object-cover"
+        style={{ aspectRatio: ratio }}
+        className="w-full h-auto object-cover"
       />
       <figcaption className="absolute left-0 bottom-0 bg-ink/85 text-bone eyebrow px-4 py-2">
         {label}
@@ -38,6 +42,8 @@ function Photo({
 /** Par antes/depois lado a lado, com rótulos fixos. Mesmo enquadramento, sem slider
  *  (as fotos originais têm ângulos diferentes, então um slider desalinharia). */
 export default function BeforeAfterCard({ item }: Props) {
+  // as duas fotos usam a proporção da foto "depois", para ficarem do mesmo tamanho
+  const ratio = item.after.width / item.after.height;
   return (
     <article className="max-w-3xl mx-auto">
       <div className="grid grid-cols-2 gap-3 md:gap-6">
@@ -47,6 +53,7 @@ export default function BeforeAfterCard({ item }: Props) {
           height={item.before.height}
           label="Antes"
           alt={`${item.title} — antes`}
+          ratio={ratio}
         />
         <Photo
           src={item.after.image}
@@ -54,6 +61,7 @@ export default function BeforeAfterCard({ item }: Props) {
           height={item.after.height}
           label="Depois"
           alt={`${item.title} — depois`}
+          ratio={ratio}
         />
       </div>
       <div data-reveal className="mt-5 flex items-baseline justify-between gap-4">
