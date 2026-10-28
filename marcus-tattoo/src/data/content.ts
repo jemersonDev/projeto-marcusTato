@@ -47,37 +47,37 @@ export const processData = [
     n: "01",
     title: "Conversa",
     text: "O cliente entra em contato e apresenta sua ideia.",
-    image: "/images/portfolio/mascaras-antebraco.webp",
+    image: "/images/portfolio/coringa-antebraco.webp",
   },
   {
     n: "02",
     title: "Ideia & referências",
     text: "O cliente envia referências, explica o que deseja e conversa sobre o projeto.",
-    image: "/images/portfolio/anjo-dinheiro-antebraco.webp",
+    image: "/images/portfolio/palhaco-balao-antebraco.webp",
   },
   {
     n: "03",
     title: "Projeto",
     text: "A ideia é analisada e transformada em uma proposta artística.",
-    image: "/images/portfolio/buda-braco.webp",
+    image: "/images/portfolio/lobo-braco.webp",
   },
   {
     n: "04",
     title: "Agendamento",
     text: "Após alinhar o projeto, o atendimento segue para o agendamento.",
-    image: "/images/portfolio/leao-aguia-braco.webp",
+    image: "/images/portfolio/sleeve-mafioso-antebraco.webp",
   },
   {
     n: "05",
     title: "Tatuagem",
     text: "O projeto ganha vida na pele.",
-    image: "/images/portfolio/palhaco-perna.webp",
+    image: "/images/portfolio/palhaco-dinheiro-panturrilha.webp",
   },
   {
     n: "06",
     title: "Cuidados",
     text: "Após o procedimento, o cliente recebe as orientações necessárias.",
-    image: "/images/portfolio/querubim-dinheiro.webp",
+    image: "/images/portfolio/costas-completas.webp",
   },
 ];
 
@@ -128,7 +128,7 @@ export const aftercareData: AftercareBlock[] = [
       "Use roupas confortáveis que dêem acesso à região.",
       "Informe o tatuador sobre qualquer questão de saúde relevante.",
     ],
-    image: "/images/portfolio/anjo-dinheiro-antebraco.webp",
+    image: "/images/portfolio/lotus-ondas-perna.webp",
   },
   {
     id: "no-dia",
@@ -153,7 +153,7 @@ export const aftercareData: AftercareBlock[] = [
       "Evite mar, piscina e atividades intensas pelo tempo indicado pelo profissional.",
       "Use apenas os produtos recomendados pelo tatuador.",
     ],
-    image: "/images/portfolio/querubim-dinheiro.webp",
+    image: "/images/portfolio/ultima-ceia-braco.webp",
   },
   {
     id: "cicatrizacao",
@@ -273,14 +273,61 @@ export const formationConfig = {
  */
 export type Course = {
   title: string;
+  /** rótulo curto exibido acima do título (ex.: "Mentoria", "Workshop") */
+  kind?: string;
   institution?: string;
   instructor?: string;
+  /** só preencha quando a data estiver visível no certificado */
   year?: string;
   description?: string;
   certificate?: string;
 };
 
-export const coursesData: Course[] = [];
+/**
+ * Dados extraídos dos certificados reais fornecidos pelo Marcus.
+ * Ordem: do mais recente para o mais antigo; sem data no certificado, no fim.
+ */
+export const coursesData: Course[] = [
+  {
+    kind: "Mentoria",
+    title: "Mentoria Técnica e Aplicação para Tatuagens Realistas",
+    instructor: "Pedro Paulo Catuta",
+    year: "Jan 2026",
+    description:
+      "Mentoria teórica e prática focada em realismo preto e cinza e aplicação de cores: construção de volume, leitura de luz e sombra, transições tonais, escolha de pigmentos e aplicação segura na pele.",
+    certificate: "/images/cursos/mentoria-realismo-2026.webp",
+  },
+  {
+    kind: "Workshop",
+    title: "Técnicas de Caligrafia Cursiva",
+    instructor: "André Tattoo",
+    year: "Mar 2023",
+    description: "Workshop de técnicas de caligrafia cursiva, base do trabalho de lettering.",
+    certificate: "/images/cursos/workshop-caligrafia-2023.webp",
+  },
+  {
+    kind: "Workshop duplo",
+    title: "Técnicas de Tatuagem",
+    instructor: "André Tattoo e Revoltado Tattooist",
+    year: "Abr 2022",
+    description: "Workshop duplo de técnicas de tatuagem, ministrado por dois artistas.",
+    certificate: "/images/cursos/workshop-duplo-2022.webp",
+  },
+  {
+    kind: "Workshop presencial",
+    title: "Realismo Colorido e Preto e Cinza",
+    instructor: "Rafael Clown Tattoo",
+    description: "Workshop presencial de realismo colorido e preto e cinza, com 8 horas de duração.",
+    certificate: "/images/cursos/workshop-realismo-colorido.webp",
+  },
+  {
+    kind: "Workshop",
+    title: "Preto e Cinza",
+    instructor: "Gustavo Pacheco",
+    description: "Workshop de preto e cinza com o tatuador Gustavo Pacheco.",
+    certificate: "/images/cursos/workshop-preto-cinza.webp",
+  },
+];
 
 /* ---------------------------------------------------------- DEPOIMENTOS --- */
 /**

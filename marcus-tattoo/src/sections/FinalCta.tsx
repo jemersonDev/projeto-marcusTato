@@ -11,7 +11,7 @@ import { useReducedMotion } from "@/hooks/useReducedMotion";
  * Imagem de fechamento — um trabalho forte do Marcus, real (não placeholder
  * genérico). Troque por outra foto do portfólio se quiser variar o encerramento.
  */
-const CLOSING_IMAGE = "/images/portfolio/querubim-dinheiro.webp";
+const CLOSING_IMAGE = "/images/portfolio/lobo-braco.webp";
 
 export default function FinalCta() {
   const root = useRef<HTMLElement>(null);
