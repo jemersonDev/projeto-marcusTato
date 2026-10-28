@@ -38,4 +38,11 @@ export const beforeAfterData: BeforeAfterItem[] = [
     before: { image: "/images/antes-depois/lobo-antes.webp", width: 909, height: 1600 },
     after: { image: "/images/portfolio/lobo-braco.webp", width: 958, height: 1600 },
   },
+  {
+    id: "lotus-ondas",
+    title: "Lótus e ondas",
+    bodyArea: "Perna",
+    before: { image: "/images/antes-depois/virgem-antes.webp", width: 739, height: 1600 },
+    after: { image: "/images/portfolio/lotus-ondas-perna.webp", width: 819, height: 1600 },
+  },
 ];
