@@ -28,21 +28,21 @@ export const specialties: Specialty[] = [
     name: "Realismo",
     description:
       "Retratos e figuras com profundidade e volume — luz, sombra e textura trabalhadas em preto e cinza.",
-    image: "/images/portfolio/buda-braco.webp",
+    image: "/images/portfolio/lobo-braco.webp",
   },
   {
     id: "black-grey",
     name: "Black & Grey",
     description:
       "Composições em tons de cinza, com contraste marcado e degradês suaves — o traço que define o estilo do estúdio.",
-    image: "/images/portfolio/peito-favela.webp",
+    image: "/images/portfolio/costas-completas.webp",
   },
   {
     id: "lettering",
     name: "Lettering",
     description:
       "Escrita autoral e caligrafia com estilo próprio, do delicado ao encorpado.",
-    image: "/images/portfolio/lettering-pescoco.webp",
+    image: "/images/portfolio/lettering-peito.webp",
   },
 ];
 

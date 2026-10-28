@@ -5,6 +5,7 @@ import About from "@/sections/About";
 import Specialties from "@/sections/Specialties";
 import PortfolioSection from "@/sections/Portfolio";
 import CinematicGallery from "@/sections/CinematicGallery";
+import BeforeAfter from "@/sections/BeforeAfter";
 import VideoSection from "@/sections/Videos";
 import Process from "@/sections/Process";
 import Formation from "@/sections/Formation";
@@ -27,6 +28,7 @@ export default function Home() {
         <Specialties />
         <PortfolioSection />
         <CinematicGallery />
+        <BeforeAfter />
         <VideoSection />
         <Process />
         <Formation />
