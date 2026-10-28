@@ -31,7 +31,14 @@ export default function Preloader() {
         });
     }, root);
 
-    return () => ctx.revert();
+    // rede de segurança: se a animação falhar por qualquer motivo, a cortina
+    // nunca pode prender o visitante fora do site.
+    const failsafe = window.setTimeout(() => setAnimationDone(true), 6000);
+
+    return () => {
+      window.clearTimeout(failsafe);
+      ctx.revert();
+    };
   }, [reduced]);
 
   if (reduced || animationDone) return null;

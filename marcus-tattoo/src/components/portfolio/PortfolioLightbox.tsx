@@ -5,6 +5,7 @@ import Image from "next/image";
 import { gsap } from "gsap";
 import type { PortfolioItem } from "@/data/portfolio";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { useFocusTrap } from "@/hooks/useFocusTrap";
 
 type Props = {
   items: PortfolioItem[];
@@ -22,6 +23,7 @@ export default function PortfolioLightbox({ items, index, onClose, onNavigate }:
   const figureRef = useRef<HTMLDivElement>(null);
   const closeBtnRef = useRef<HTMLButtonElement>(null);
   const touchStartX = useRef<number | null>(null);
+  useFocusTrap(overlayRef);
 
   const goNext = useCallback(
     () => onNavigate((index + 1) % total),
@@ -98,6 +100,7 @@ export default function PortfolioLightbox({ items, index, onClose, onNavigate }:
       ref={overlayRef}
       role="dialog"
       aria-modal="true"
+      data-lenis-prevent
       aria-label={`${item.title}. Imagem ${index + 1} de ${total}`}
       className="fixed inset-0 z-[90] bg-ink flex flex-col"
       onTouchStart={onTouchStart}

@@ -4,10 +4,10 @@ Site oficial do estúdio Marcus Tattoo (Uberaba/MG). Next.js + TypeScript +
 Tailwind CSS 4 + GSAP/ScrollTrigger + Lenis. Exporta site estático pronto para
 a Hostinger.
 
-> **Status:** fundação completa e funcional (config editável, design system,
-> preloader, header, hero, smooth scroll, SEO/JSON-LD, deploy pronto).
-> As demais seções entram em `src/sections/` seguindo a ordem já mapeada em
-> `src/app/page.tsx`.
+> **Status:** site completo (hero, sobre, especialidades, portfólio, galeria,
+> antes e depois, vídeos, processo, formação com certificados, cuidados,
+> localização, FAQ, atendimento 24h). Falta só o conteúdo final: foto do
+> Marcus (Sobre), foto/vídeo do topo (Hero) e confirmar o domínio.
 
 ---
 

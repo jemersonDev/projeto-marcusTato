@@ -9,6 +9,7 @@ import { useEffect, useRef, useState } from "react";
  * (Arquitetura pronta para, no futuro, subir para um storage configurado.)
  */
 const MAX_MB = 8;
+const ALLOWED = ["image/jpeg", "image/png", "image/webp", "image/gif", "image/heic", "image/heif"];
 
 export default function ReferenceUpload({
   onFile,
@@ -29,8 +30,8 @@ export default function ReferenceUpload({
 
   const handle = (file?: File) => {
     if (!file) return;
-    if (!file.type.startsWith("image/")) {
-      setError("Envie um arquivo de imagem (JPG, PNG, etc.).");
+    if (!ALLOWED.includes(file.type)) {
+      setError("Envie uma imagem JPG, PNG, WEBP ou HEIC.");
       return;
     }
     if (file.size > MAX_MB * 1024 * 1024) {
@@ -47,9 +48,12 @@ export default function ReferenceUpload({
       <input
         ref={inputRef}
         type="file"
-        accept="image/*"
+        accept="image/jpeg,image/png,image/webp,image/gif,image/heic,image/heif"
         className="sr-only"
-        onChange={(e) => handle(e.target.files?.[0])}
+        onChange={(e) => {
+          handle(e.target.files?.[0]);
+          e.target.value = ""; // permite escolher o mesmo arquivo de novo
+        }}
       />
 
       {preview && (

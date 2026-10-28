@@ -141,7 +141,7 @@ export default function Location() {
                   title={mapAccessibleLabel}
                   aria-label={mapAccessibleLabel}
                   loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
+                  referrerPolicy="strict-origin-when-cross-origin"
                   className="absolute inset-0 h-full w-full grayscale-[35%] contrast-[1.05] brightness-[0.9]"
                   style={{ border: 0 }}
                 />

@@ -49,7 +49,12 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
       if (!target) return;
       const id = target.getAttribute("href");
       if (!id || id === "#") return;
-      const el = document.querySelector(id);
+      let el: Element | null = null;
+      try {
+        el = document.querySelector(id);
+      } catch {
+        return; // seletor inválido: deixa o navegador lidar
+      }
       if (!el) return;
       e.preventDefault();
       lenis.scrollTo(el as HTMLElement, { offset: -80 });
