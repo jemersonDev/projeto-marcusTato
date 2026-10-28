@@ -775,7 +775,7 @@ via automacao de navegador real, nao apenas leitura de codigo.
 - Confirmar/ajustar as 3 especialidades listadas (Realismo, Black & Grey,
   Lettering) ou adicionar outras do catalogo ja preparado em
   src/data/specialties.ts.
-- Dominio final (hoje: marcustattoo.ink como placeholder em siteConfig.url).
+- Dominio final: marcustattooink.com.br (registrado no Registro.br; apontar DNS para o Vercel).
 - Imagem OG definitiva (hoje: gerada automaticamente com logo + foto real,
   funcional mas generica).
 - Numero de WhatsApp: extraido do link publico do Instagram dele — vale
